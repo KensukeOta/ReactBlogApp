@@ -4,8 +4,8 @@ import './index.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import { Top } from './components/pages/Top';
-import { SignupForm } from './components/pages/SignupForm';
-import { LoginForm } from './components/pages/LoginForm';
+import { Signup } from './components/pages/Signup';
+import { Login } from './components/pages/Login';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -15,8 +15,8 @@ root.render(
     <Router>
       <Routes>
         <Route path="/" element={<Top />} />
-        <Route path="/signup" element={<SignupForm />} />
-        <Route path="/login" element={<LoginForm />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
   </React.StrictMode>
