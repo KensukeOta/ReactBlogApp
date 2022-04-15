@@ -6,19 +6,22 @@ import reportWebVitals from './reportWebVitals';
 import { Top } from './components/pages/Top';
 import { Signup } from './components/pages/Signup';
 import { Login } from './components/pages/Login';
+import { RecoilRoot } from 'recoil';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <Router>
-      <Routes>
-        <Route path="/" element={<Top />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
-    </Router>
+    <RecoilRoot>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Top />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </Router>
+    </RecoilRoot>
   </React.StrictMode>
 );
 
