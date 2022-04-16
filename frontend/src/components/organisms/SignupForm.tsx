@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState, useSetRecoilState } from "recoil";
@@ -20,6 +20,12 @@ export const SignupForm = () => {
   const setUser = useSetRecoilState(authUserInfo);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLogin) {
+      navigate('/', { replace: true });
+    }
+  }, []);
   
   const {
     handleSubmit,
