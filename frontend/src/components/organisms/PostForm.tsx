@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -15,6 +16,12 @@ export const PostForm = () => {
   const user = useRecoilValue(authUserInfo);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isLogin) {
+      navigate('/login', { replace: true });
+    }
+  }, []);
   
   const {
     handleSubmit,
@@ -33,7 +40,7 @@ export const PostForm = () => {
       await axios.post('http://localhost:8080/api/store', { title: data.title, body: data.body, user_id: data.user_id });
       navigate("/", { replace: true });
     } catch (error: any) {
-      console.log(error);
+      console.log(error.response);
     }
   };
   
