@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import { axios } from "../../lib/axios";
 import { authUserInfo } from "../../store/authUserInfo";
 import { loginState } from "../../store/loginState";
@@ -10,7 +10,7 @@ import { PostArea } from "../molecures/PostArea";
 import { TitleArea } from "../molecures/TitleArea";
 
 export const PostForm = () => {
-  const [authUserStatus, setAuthUserStatus] = useRecoilState(loginState);
+  const authUserStatus = useRecoilValue(loginState);
   const isLogin = authUserStatus ? authUserStatus.isLogin : false;
 
   const user = useRecoilValue(authUserInfo);
