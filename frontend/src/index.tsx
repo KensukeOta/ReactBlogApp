@@ -9,6 +9,7 @@ import { Login } from './components/pages/Login';
 import { RecoilRoot } from 'recoil';
 import { Post } from './components/pages/Post';
 import { PostContent } from './components/pages/PostContent';
+import { PostEdit } from './components/pages/PostEdit';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -23,6 +24,7 @@ root.render(
           <Route path="/login" element={<Login />} />
           <Route path="/posts/create" element={<Post />} />
           <Route path="/posts/:id" element={<PostContent />} />
+          <Route path="/posts/:id/edit" element={<PostEdit />} />
         </Routes>
       </Router>
     </RecoilRoot>
