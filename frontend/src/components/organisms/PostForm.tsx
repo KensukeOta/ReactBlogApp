@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { axios } from "../../lib/axios";
 import { authUserInfo } from "../../store/authUserInfo";
 import { loginState } from "../../store/loginState";
+import { postInfo } from "../../store/postInfo";
 import { SubmitBtn } from "../atoms/SubmitBtn";
 import { PostArea } from "../molecures/PostArea";
 import { TitleArea } from "../molecures/TitleArea";
@@ -14,6 +15,8 @@ export const PostForm = () => {
   const isLogin = authUserStatus ? authUserStatus.isLogin : false;
 
   const user = useRecoilValue(authUserInfo);
+
+  const setPost = useSetRecoilState(postInfo);
 
   const navigate = useNavigate();
 
@@ -38,6 +41,8 @@ export const PostForm = () => {
   const onSubmit = async (data: any) => {
     try {
       await axios.post('http://localhost:8080/api/store', { title: data.title, body: data.body, user_id: data.user_id });
+      const res = await axios.get('http://localhost:8080/api/posts');
+      setPost(res.data);
       navigate("/", { replace: true });
     } catch (error: any) {
       console.log(error.response);
