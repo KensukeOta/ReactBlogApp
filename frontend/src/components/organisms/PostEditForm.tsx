@@ -1,13 +1,21 @@
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { axios } from "../../lib/axios";
+import { authUserInfo } from "../../store/authUserInfo";
+import { loginState } from "../../store/loginState";
 import { postInfo } from "../../store/postInfo";
 import { SubmitBtn } from "../atoms/SubmitBtn";
 import { PostArea } from "../molecures/PostArea";
 import { TitleArea } from "../molecures/TitleArea";
 
 export const PostEditForm = () => {
+  const authUserStatus = useRecoilValue(loginState);
+  const isLogin = authUserStatus ? authUserStatus.isLogin : false;
+
+  const user = useRecoilValue(authUserInfo);
+
   const setPost = useSetRecoilState(postInfo);
   
   let params = useParams();
@@ -15,6 +23,12 @@ export const PostEditForm = () => {
   const post = posts.find((post: any) => post.id == params.id)
   
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isLogin || user.id !== post.user_id) {
+      navigate('/', { replace: true });
+    }
+  }, []);
   
   const {
     handleSubmit,
