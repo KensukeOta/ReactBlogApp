@@ -25,4 +25,5 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::controller(PostController::class)->group(function () {
     Route::get('/posts', 'index');
     Route::post('/store', 'store');
+    Route::patch('/posts/{id}/update', 'update')->where('id', '[0-9]+');
 });
