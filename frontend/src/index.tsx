@@ -7,6 +7,7 @@ import { Top } from './components/pages/Top';
 import { Signup } from './components/pages/Signup';
 import { Login } from './components/pages/Login';
 import { RecoilRoot } from 'recoil';
+import { Post } from './components/pages/Post';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -19,6 +20,7 @@ root.render(
           <Route path="/" element={<Top />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/posts/create" element={<Post />} />
         </Routes>
       </Router>
     </RecoilRoot>
