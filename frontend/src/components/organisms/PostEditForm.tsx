@@ -16,7 +16,7 @@ export const PostEditForm = () => {
 
   const user = useRecoilValue(authUserInfo);
 
-  const setPost = useSetRecoilState(postInfo);
+  const setPosts = useSetRecoilState(postInfo);
   
   let params = useParams();
   const posts = useRecoilValue(postInfo);
@@ -46,7 +46,7 @@ export const PostEditForm = () => {
     try {
       await axios.patch(`http://localhost:8080/api/posts/${params.id}/update`, { title: data.title, body: data.body, user_id: data.user_id });
       const res = await axios.get('http://localhost:8080/api/posts');
-      setPost(res.data);
+      setPosts(res.data);
       navigate("/", { replace: true });
     } catch (error: any) {
       console.log(error.response);

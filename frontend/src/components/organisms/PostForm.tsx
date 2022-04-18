@@ -16,7 +16,7 @@ export const PostForm = () => {
 
   const user = useRecoilValue(authUserInfo);
 
-  const setPost = useSetRecoilState(postInfo);
+  const setPosts = useSetRecoilState(postInfo);
 
   const navigate = useNavigate();
 
@@ -42,7 +42,7 @@ export const PostForm = () => {
     try {
       await axios.post('http://localhost:8080/api/store', { title: data.title, body: data.body, user_id: data.user_id });
       const res = await axios.get('http://localhost:8080/api/posts');
-      setPost(res.data);
+      setPosts(res.data);
       navigate("/", { replace: true });
     } catch (error: any) {
       console.log(error.response);
