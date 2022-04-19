@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { axios } from "../../lib/axios";
 import { authUserInfo } from "../../store/authUserInfo";
 import { loginState } from "../../store/loginState";
@@ -16,10 +16,9 @@ export const PostEditForm = () => {
 
   const user = useRecoilValue(authUserInfo);
 
-  const setPosts = useSetRecoilState(postInfo);
+  const [posts, setPosts] = useRecoilState(postInfo);
   
   let params = useParams();
-  const posts = useRecoilValue(postInfo);
   const post = posts.find((post: any) => post.id == params.id)
   
   const navigate = useNavigate();
