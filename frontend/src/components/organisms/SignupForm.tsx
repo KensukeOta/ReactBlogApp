@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { axios } from "../../lib/axios";
 import { authUserInfo } from "../../store/authUserInfo";
 import { loginState } from "../../store/loginState";
+import type { IFormInput } from "../../types/IFormInput";
 import { SubmitBtn } from "../atoms/SubmitBtn";
 import { EmailArea } from "../molecures/EmailArea";
 import { NameArea } from "../molecures/NameArea";
@@ -12,7 +13,7 @@ import { PasswordArea } from "../molecures/PasswordArea";
 import { PasswordConfirmArea } from "../molecures/PasswordConfirmArea";
 
 export const SignupForm = () => {
-  const [error, setError] = useState();
+  const [error, setError] = useState<string>();
 
   const [authUserStatus, setAuthUserStatus] = useRecoilState(loginState);
   const isLogin = authUserStatus ? authUserStatus.isLogin : false;
@@ -32,7 +33,7 @@ export const SignupForm = () => {
     register,
     formState: { errors },
     getValues
-  } = useForm({
+  } = useForm<IFormInput>({
     defaultValues: {
       name: "",
       email: "",
@@ -41,7 +42,7 @@ export const SignupForm = () => {
     }
   });
 
-  const onSubmit = async (data: any) => {
+  const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     try {
       await axios.get('http://localhost:8080/sanctum/csrf-cookie');
       await axios.post('http://localhost:8080/api/register', { name: data.name, email: data.email, password: data.password, password_confirmation: data.password_confirmation });
