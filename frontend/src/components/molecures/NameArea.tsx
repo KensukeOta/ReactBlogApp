@@ -1,7 +1,8 @@
+import type { UserRegisterProps } from "../../types/UserRegisterProps";
 import { Label } from "../atoms/Label";
 import { NameInput } from "../atoms/NameInput";
 
-export const NameArea = ({ register }: any) => {
+export const NameArea = ({ register }: UserRegisterProps) => {
   return (
     <>
       <dt>

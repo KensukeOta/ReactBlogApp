@@ -5,7 +5,7 @@ import { useRecoilState, useSetRecoilState } from "recoil";
 import { axios } from "../../lib/axios";
 import { authUserInfo } from "../../store/authUserInfo";
 import { loginState } from "../../store/loginState";
-import type { IFormInput } from "../../types/IFormInput";
+import type { User } from "../../types/User";
 import { SubmitBtn } from "../atoms/SubmitBtn";
 import { EmailArea } from "../molecures/EmailArea";
 import { NameArea } from "../molecures/NameArea";
@@ -33,7 +33,7 @@ export const SignupForm = () => {
     register,
     formState: { errors },
     getValues
-  } = useForm<IFormInput>({
+  } = useForm<User>({
     defaultValues: {
       name: "",
       email: "",
@@ -42,7 +42,7 @@ export const SignupForm = () => {
     }
   });
 
-  const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+  const onSubmit: SubmitHandler<User> = async (data) => {
     try {
       await axios.get('http://localhost:8080/sanctum/csrf-cookie');
       await axios.post('http://localhost:8080/api/register', { name: data.name, email: data.email, password: data.password, password_confirmation: data.password_confirmation });

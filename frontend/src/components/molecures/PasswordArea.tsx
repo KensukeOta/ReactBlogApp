@@ -1,7 +1,8 @@
+import type { UserRegisterProps } from "../../types/UserRegisterProps";
 import { Label } from "../atoms/Label";
 import { PasswordInput } from "../atoms/PasswordInput";
 
-export const PasswordArea = ({ register }: any) => {
+export const PasswordArea = ({ register }: UserRegisterProps) => {
   return (
     <>
       <dt>
