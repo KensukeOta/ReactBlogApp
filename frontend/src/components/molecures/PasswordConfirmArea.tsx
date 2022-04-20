@@ -1,8 +1,9 @@
 import type { FC } from "react";
+import type { UserRegisterProps } from "../../types/UserRegisterProps";
 import { Label } from "../atoms/Label";
 import { PasswordConfirmInput } from "../atoms/PasswordConfirmInput";
 
-export const PasswordConfirmArea: FC<any> = ({ register, getValues }) => {
+export const PasswordConfirmArea: FC<UserRegisterProps> = ({ register, getValues }) => {
   return (
     <>
       <dt>
