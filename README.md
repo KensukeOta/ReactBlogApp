@@ -9,6 +9,7 @@ Reactを使用した完全SPAのブログアプリです。
 - ルーティングライブラリ: __React Router__
 - フォームライブラリ: __React Hook Form__
 - 状態管理ライプラリ: __Recoil__
+- コンポーネント設計: __Atomic Design__
 - HTTPクライアント: __axios__
 - バージョン管理ツール: __Git__ / __GitHub__
 - タスク管理: __GitHub Issues__
