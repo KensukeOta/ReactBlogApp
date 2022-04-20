@@ -1,11 +1,12 @@
 import { useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { axios } from "../../lib/axios";
 import { authUserInfo } from "../../store/authUserInfo";
 import { loginState } from "../../store/loginState";
 import { postInfo } from "../../store/postInfo";
+import type { Post } from "../../types/Post";
 import { SubmitBtn } from "../atoms/SubmitBtn";
 import { PostArea } from "../molecures/PostArea";
 import { TitleArea } from "../molecures/TitleArea";
@@ -33,7 +34,7 @@ export const PostEditForm = () => {
     handleSubmit,
     register,
     formState: { errors }
-  } = useForm({
+  } = useForm<Post>({
     defaultValues: {
       title: `${post.title}`,
       body: `${post.body}`,
@@ -41,7 +42,7 @@ export const PostEditForm = () => {
     }
   });
 
-  const onSubmit = async (data: any) => {
+  const onSubmit: SubmitHandler<Post> = async (data) => {
     try {
       await axios.patch(`http://localhost:8080/api/posts/${params.id}/update`, { title: data.title, body: data.body, user_id: data.user_id });
       const res = await axios.get('http://localhost:8080/api/posts');

@@ -1,3 +1,4 @@
+import type { FC } from "react";
 import { useRecoilValue } from "recoil";
 import { authUserInfo } from "../../store/authUserInfo";
 import { loginState } from "../../store/loginState";
@@ -6,7 +7,7 @@ import { LinkBtn } from "../atoms/LinkBtn";
 import { PostItem } from "../organisms/PostItem";
 import { DefaultLayout } from "../templates/DefaultLayout";
 
-export const Top = () => {
+export const Top: FC = () => {
   const authUserStatus = useRecoilValue(loginState);
   const isLogin = authUserStatus ? authUserStatus.isLogin : false;
 
