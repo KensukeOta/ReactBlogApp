@@ -1,9 +1,11 @@
+import type { FC } from "react";
+import type { Post } from "../../types/Post";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { axios } from "../../lib/axios";
 import { postInfo } from "../../store/postInfo";
 
-export const DeleteBtn = (props: any) => {
+export const DeleteBtn: FC<Post> = (props) => {
   const [posts, setPosts] = useRecoilState(postInfo);
   
   const navigate = useNavigate();
@@ -13,7 +15,7 @@ export const DeleteBtn = (props: any) => {
       return;
     }
     await axios.delete(`http://localhost:8080/api/posts/${props.id}/destroy`);
-    const newPosts = posts.filter((post: any) => post.id !== props.id);
+    const newPosts = posts.filter((post: Post) => post.id !== props.id);
     setPosts(newPosts);
     navigate('/', { replace: true });
   };

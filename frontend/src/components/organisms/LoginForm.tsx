@@ -1,4 +1,5 @@
 import type { FC } from "react";
+import type { User } from "../../types/User";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -6,7 +7,6 @@ import { useRecoilState, useSetRecoilState } from "recoil";
 import { axios } from "../../lib/axios";
 import { authUserInfo } from "../../store/authUserInfo";
 import { loginState } from "../../store/loginState";
-import type { User } from "../../types/User";
 import { SubmitBtn } from "../atoms/SubmitBtn";
 import { EmailArea } from "../molecures/EmailArea";
 import { PasswordArea } from "../molecures/PasswordArea";
