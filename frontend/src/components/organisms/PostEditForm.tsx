@@ -36,7 +36,7 @@ export const PostEditForm: FC = () => {
     handleSubmit,
     register,
     formState: { errors }
-  } = useForm({
+  } = useForm<Post>({
     defaultValues: {
       title: `${post.title}`,
       body: `${post.body}`,

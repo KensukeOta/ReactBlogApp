@@ -33,7 +33,7 @@ export const PostForm: FC = () => {
     handleSubmit,
     register,
     formState: { errors }
-  } = useForm({
+  } = useForm<Post>({
     defaultValues: {
       title: "",
       body: "",
