@@ -1,3 +1,4 @@
+import type { FC } from "react";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -12,7 +13,7 @@ import { NameArea } from "../molecures/NameArea";
 import { PasswordArea } from "../molecures/PasswordArea";
 import { PasswordConfirmArea } from "../molecures/PasswordConfirmArea";
 
-export const SignupForm = () => {
+export const SignupForm: FC = () => {
   const [error, setError] = useState<string>();
 
   const [authUserStatus, setAuthUserStatus] = useRecoilState(loginState);

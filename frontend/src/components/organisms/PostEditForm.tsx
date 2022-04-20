@@ -1,3 +1,5 @@
+import type { FC } from "react";
+import type { Post } from "../../types/Post";
 import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
@@ -6,12 +8,11 @@ import { axios } from "../../lib/axios";
 import { authUserInfo } from "../../store/authUserInfo";
 import { loginState } from "../../store/loginState";
 import { postInfo } from "../../store/postInfo";
-import type { Post } from "../../types/Post";
 import { SubmitBtn } from "../atoms/SubmitBtn";
 import { PostArea } from "../molecures/PostArea";
 import { TitleArea } from "../molecures/TitleArea";
 
-export const PostEditForm = () => {
+export const PostEditForm: FC = () => {
   const authUserStatus = useRecoilValue(loginState);
   const isLogin = authUserStatus ? authUserStatus.isLogin : false;
 

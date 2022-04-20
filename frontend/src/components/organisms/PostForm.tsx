@@ -1,3 +1,4 @@
+import type { FC } from "react";
 import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -11,7 +12,7 @@ import { SubmitBtn } from "../atoms/SubmitBtn";
 import { PostArea } from "../molecures/PostArea";
 import { TitleArea } from "../molecures/TitleArea";
 
-export const PostForm = () => {
+export const PostForm: FC = () => {
   const authUserStatus = useRecoilValue(loginState);
   const isLogin = authUserStatus ? authUserStatus.isLogin : false;
 

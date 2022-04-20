@@ -1,3 +1,4 @@
+import type { FC } from "react";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -10,7 +11,7 @@ import { SubmitBtn } from "../atoms/SubmitBtn";
 import { EmailArea } from "../molecures/EmailArea";
 import { PasswordArea } from "../molecures/PasswordArea";
 
-export const LoginForm = () => {
+export const LoginForm: FC = () => {
   const [error, setError] = useState<string>();
   
   const [authUserStatus, setAuthUserStatus] = useRecoilState(loginState);

@@ -1,4 +1,5 @@
 import type { FC } from "react";
+import type { Post } from "../../types/Post";
 import { useRecoilValue } from "recoil";
 import { authUserInfo } from "../../store/authUserInfo";
 import { loginState } from "../../store/loginState";
@@ -26,7 +27,7 @@ export const Top: FC = () => {
       </nav>
       
       <ul>
-        {posts.map((post: any) => (
+        {posts.map((post: Post) => (
           <PostItem key={post.id} post={post} />
         ))}
       </ul>
