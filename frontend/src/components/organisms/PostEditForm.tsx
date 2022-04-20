@@ -1,9 +1,10 @@
 import type { FC } from "react";
 import type { Post } from "../../types/Post";
+import type { SubmitHandler } from "react-hook-form";
 import { useEffect } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { axios } from "../../lib/axios";
 import { authUserInfo } from "../../store/authUserInfo";
 import { loginState } from "../../store/loginState";
@@ -21,7 +22,7 @@ export const PostEditForm: FC = () => {
   const [posts, setPosts] = useRecoilState(postInfo);
   
   let params = useParams();
-  const post = posts.find((post: any) => post.id == params.id)
+  const post = posts.find((post: Post) => post.id == params.id)
   
   const navigate = useNavigate();
 

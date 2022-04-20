@@ -1,7 +1,8 @@
 import type { FC } from "react";
 import type { Post } from "../../types/Post";
+import type { SubmitHandler } from "react-hook-form";
 import { useEffect } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { axios } from "../../lib/axios";
