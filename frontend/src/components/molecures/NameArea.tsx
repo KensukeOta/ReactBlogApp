@@ -1,8 +1,8 @@
-import type { UserRegisterProps } from "../../types/UserRegisterProps";
+import type { FC } from "react";
 import { Label } from "../atoms/Label";
 import { NameInput } from "../atoms/NameInput";
 
-export const NameArea = ({ register }: UserRegisterProps) => {
+export const NameArea: FC<any> = ({ register }) => {
   return (
     <>
       <dt>

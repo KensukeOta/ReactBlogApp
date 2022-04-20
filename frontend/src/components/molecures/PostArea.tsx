@@ -1,8 +1,8 @@
-import type { PostRegisterProps } from "../../types/PostRegisterProps";
+import type { FC } from "react";
 import { Label } from "../atoms/Label";
 import { PostInput } from "../atoms/PostInput";
 
-export const PostArea = ({ register }: PostRegisterProps) => {
+export const PostArea: FC<any> = ({ register }) => {
   return (
     <>
       <dt>
