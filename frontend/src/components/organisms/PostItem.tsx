@@ -1,5 +1,6 @@
 import type { FC } from "react";
 import type { PostProps } from "../../types/PostProps";
+import type { User } from "../../types/User";
 import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { authUserInfo } from "../../store/authUserInfo";
@@ -7,7 +8,7 @@ import { EditBtn } from "../atoms/EditBtn";
 import { DeleteBtn } from "../atoms/DeleteBtn";
 
 export const PostItem: FC<PostProps> = (props) => {
-  const user = useRecoilValue(authUserInfo);
+  const user = useRecoilValue<User>(authUserInfo);
   
   return (
     <li className="border p-2">

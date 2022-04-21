@@ -17,10 +17,10 @@ import { PasswordConfirmArea } from "../molecures/PasswordConfirmArea";
 export const SignupForm: FC = () => {
   const [error, setError] = useState<string>();
 
-  const [authUserStatus, setAuthUserStatus] = useRecoilState(loginState);
+  const [authUserStatus, setAuthUserStatus] = useRecoilState<User>(loginState);
   const isLogin = authUserStatus ? authUserStatus.isLogin : false;
 
-  const setUser = useSetRecoilState(authUserInfo);
+  const setUser = useSetRecoilState<User>(authUserInfo);
 
   const navigate = useNavigate();
 

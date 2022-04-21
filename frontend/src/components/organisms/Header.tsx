@@ -1,11 +1,12 @@
 import type { FC } from "react";
+import type { User } from "../../types/User";
 import { useRecoilValue } from "recoil";
 import { loginState } from "../../store/loginState";
 import { LinkBtn } from "../atoms/LinkBtn";
 import { LogoutBtn } from "../atoms/LogoutBtn";
 
 export const Header: FC = () => {
-  const authUserStatus = useRecoilValue(loginState);
+  const authUserStatus = useRecoilValue<User>(loginState);
   const isLogin = authUserStatus ? authUserStatus.isLogin : false;
 
   return (

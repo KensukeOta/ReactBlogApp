@@ -1,5 +1,6 @@
 import type { FC } from "react";
 import type { Post } from "../../types/Post";
+import type { User } from "../../types/User";
 import { useRecoilValue } from "recoil";
 import { authUserInfo } from "../../store/authUserInfo";
 import { loginState } from "../../store/loginState";
@@ -9,10 +10,10 @@ import { PostItem } from "../organisms/PostItem";
 import { DefaultLayout } from "../templates/DefaultLayout";
 
 export const Top: FC = () => {
-  const authUserStatus = useRecoilValue(loginState);
+  const authUserStatus = useRecoilValue<User>(loginState);
   const isLogin = authUserStatus ? authUserStatus.isLogin : false;
 
-  const user = useRecoilValue(authUserInfo);
+  const user = useRecoilValue<User>(authUserInfo);
 
   const posts = useRecoilValue(postInfo);
   

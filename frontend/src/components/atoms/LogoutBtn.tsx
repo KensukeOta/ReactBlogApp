@@ -1,4 +1,5 @@
 import type { FC } from "react";
+import type { User } from "../../types/User";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { axios } from "../../lib/axios";
@@ -6,7 +7,7 @@ import { authUserInfo } from "../../store/authUserInfo";
 import { loginState } from "../../store/loginState";
 
 export const LogoutBtn: FC = () => {
-  const [authUserStatus, setAuthUserStatus] = useRecoilState(loginState);
+  const [authUserStatus, setAuthUserStatus] = useRecoilState<User>(loginState);
 
   const setUser = useSetRecoilState(authUserInfo);
   

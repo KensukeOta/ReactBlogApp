@@ -1,6 +1,7 @@
 import type { FC } from "react";
 import type { Post } from "../../types/Post";
 import type { SubmitHandler } from "react-hook-form";
+import type { User } from "../../types/User";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -14,10 +15,10 @@ import { PostArea } from "../molecures/PostArea";
 import { TitleArea } from "../molecures/TitleArea";
 
 export const PostForm: FC = () => {
-  const authUserStatus = useRecoilValue(loginState);
+  const authUserStatus = useRecoilValue<User>(loginState);
   const isLogin = authUserStatus ? authUserStatus.isLogin : false;
 
-  const user = useRecoilValue(authUserInfo);
+  const user = useRecoilValue<User>(authUserInfo);
 
   const setPosts = useSetRecoilState(postInfo);
 
