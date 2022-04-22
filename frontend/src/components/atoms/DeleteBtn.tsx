@@ -6,7 +6,7 @@ import { axios } from "../../lib/axios";
 import { postInfo } from "../../store/postInfo";
 
 export const DeleteBtn: FC<Post> = (props) => {
-  const [posts, setPosts] = useRecoilState(postInfo);
+  const [posts, setPosts] = useRecoilState<Post[]>(postInfo);
   
   const navigate = useNavigate();
   

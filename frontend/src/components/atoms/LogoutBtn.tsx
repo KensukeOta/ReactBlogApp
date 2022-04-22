@@ -9,7 +9,7 @@ import { loginState } from "../../store/loginState";
 export const LogoutBtn: FC = () => {
   const [authUserStatus, setAuthUserStatus] = useRecoilState<User>(loginState);
 
-  const setUser = useSetRecoilState(authUserInfo);
+  const setUser = useSetRecoilState<User | string>(authUserInfo);
   
   const navigate = useNavigate();
 

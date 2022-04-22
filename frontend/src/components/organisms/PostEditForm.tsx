@@ -20,7 +20,7 @@ export const PostEditForm: FC = () => {
 
   const user = useRecoilValue<User>(authUserInfo);
 
-  const [posts, setPosts] = useRecoilState(postInfo);
+  const [posts, setPosts] = useRecoilState<Post[]>(postInfo);
   
   let params = useParams();
   const post = posts.find((post: Post) => post.id == params.id)
@@ -28,7 +28,7 @@ export const PostEditForm: FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isLogin || user.id !== post.user_id) {
+    if (!isLogin || user.id !== post!.user_id) {
       navigate('/', { replace: true });
     }
   }, []);
@@ -39,9 +39,9 @@ export const PostEditForm: FC = () => {
     formState: { errors }
   } = useForm<Post>({
     defaultValues: {
-      title: `${post.title}`,
-      body: `${post.body}`,
-      user_id: `${post.user.id}`,
+      title: `${post!.title}`,
+      body: `${post!.body}`,
+      user_id: `${post!.user!.id}`,
     }
   });
 

@@ -20,7 +20,7 @@ export const PostForm: FC = () => {
 
   const user = useRecoilValue<User>(authUserInfo);
 
-  const setPosts = useSetRecoilState(postInfo);
+  const setPosts = useSetRecoilState<Post[]>(postInfo);
 
   const navigate = useNavigate();
 

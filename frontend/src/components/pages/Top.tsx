@@ -15,7 +15,7 @@ export const Top: FC = () => {
 
   const user = useRecoilValue<User>(authUserInfo);
 
-  const posts = useRecoilValue(postInfo);
+  const posts = useRecoilValue<Post[]>(postInfo);
   
   return (
     <DefaultLayout>
